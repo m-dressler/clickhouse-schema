@@ -1,0 +1,9 @@
+{
+  "name": "@md/clickhouse-schema",
+  "version": "0.0.0",
+  "tasks": {
+    "dev": "deno run --watch main.ts"
+  },
+  "include": ["src/", "deno.json", "deno.lock", "README.md", "LICENSE"],
+  "exports": "./src/_mod.ts"
+}
