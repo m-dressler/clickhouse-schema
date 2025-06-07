@@ -1,6 +1,6 @@
 {
   "name": "@md/clickhouse-schema",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "tasks": {
     "dev": "deno run --watch main.ts"
   },
