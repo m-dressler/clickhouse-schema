@@ -5,6 +5,11 @@ import { tuple } from "./tuple.ts";
 
 Deno.test("Tuple", () =>
   assertDataTypeEquals(
-    tuple({ itemTypes: [string(), int8()] as const }),
-    "Tuple(String, Int8)",
+    tuple({
+      itemTypes: [
+        ["name", string()],
+        ["age", int8()],
+      ] as const,
+    }),
+    "Tuple(name String, age Int8)",
   ));
