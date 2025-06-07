@@ -51,6 +51,7 @@ import {
   type LowCardinalityDataTypes,
 } from "./data-types/low-cardinality.ts";
 import { type CHNullable, nullable } from "./data-types/nullable.ts";
+import { type CHPoint, point } from "./data-types/point.ts";
 import { type CHString, string } from "./data-types/string.ts";
 import { type CHTuple, tuple } from "./data-types/tuple.ts";
 import { type CHUUID, uuid } from "./data-types/uuid.ts";
@@ -93,6 +94,7 @@ export {
   type CHJson,
   type CHLowCardinality,
   type CHNullable,
+  type CHPoint,
   type CHString,
   type CHTuple,
   type CHUInt128,
@@ -127,6 +129,7 @@ export {
   json,
   lowCardinality,
   nullable,
+  point,
   string,
   tuple,
   uint128,
