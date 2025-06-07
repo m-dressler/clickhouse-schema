@@ -4,7 +4,7 @@ import { DataType, DataTypes } from "../_mod.ts";
 export type CHUUID = DataType<DataTypes.UUID, string>;
 
 /**
- * Creates a new `String` ClickHouse value
+ * Creates a new `UUID` ClickHouse value
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/uuid
  */
