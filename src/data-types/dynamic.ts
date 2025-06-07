@@ -8,18 +8,14 @@ export type CHDynamic = DataType<DataTypes.Dynamic, unknown>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/dynamic
  */
-export const dynamic = ({
-  maxTypes,
-  description,
-  default: defaultVal,
-}: {
+export const dynamic = (c: {
   maxTypes: number;
   description?: string;
   default?: unknown;
 }): CHDynamic => ({
   type: DataTypes.Dynamic,
-  typeScriptType: defaultVal,
-  description,
-  default: defaultVal,
-  arguments: [maxTypes],
+  typeScriptType: c.default,
+  description: c.description,
+  default: c.default,
+  arguments: [c.maxTypes],
 });

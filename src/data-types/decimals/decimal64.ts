@@ -8,18 +8,14 @@ export type CHDecimal64 = DataType<DataTypes.Decimal64, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/decimal
  */
-export const decimal64 = ({
-  scale,
-  description,
-  default: defaultVal,
-}: {
+export const decimal64 = (c: {
   scale: number;
   description?: string;
   default?: number;
 }): CHDecimal64 => ({
   type: DataTypes.Decimal64,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
-  arguments: [scale],
+  description: c.description,
+  default: c.default,
+  typeScriptType: c.default!,
+  arguments: [c.scale],
 });

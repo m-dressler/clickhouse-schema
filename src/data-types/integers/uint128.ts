@@ -8,15 +8,12 @@ export type CHUInt128 = DataType<DataTypes.UInt128, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/int-uint
  */
-export const uint128 = ({
-  description,
-  default: defaultVal,
-}: {
+export const uint128 = (c?: {
   description?: string;
   default?: number;
-} = {}): CHUInt128 => ({
+}): CHUInt128 => ({
   type: DataTypes.UInt128,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

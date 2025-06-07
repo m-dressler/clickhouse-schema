@@ -8,15 +8,12 @@ export type CHString = DataType<DataTypes.String, string>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/string
  */
-export const string = ({
-  description,
-  default: defaultVal,
-}: {
+export const string = (c?: {
   description?: string;
   default?: string;
-} = {}): CHString => ({
+}): CHString => ({
   type: DataTypes.String,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

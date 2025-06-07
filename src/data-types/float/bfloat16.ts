@@ -8,15 +8,12 @@ export type CHBFloat16 = DataType<DataTypes.BFloat16, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/float
  */
-export const bfloat16 = ({
-  description,
-  default: defaultVal,
-}: {
+export const bfloat16 = (c?: {
   description?: string;
   default?: number;
-} = {}): CHBFloat16 => ({
+}): CHBFloat16 => ({
   type: DataTypes.BFloat16,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

@@ -8,15 +8,12 @@ export type CHDate32 = DataType<DataTypes.Date32, Date>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/date32
  */
-export const date32 = ({
-  description,
-  default: defaultVal,
-}: {
+export const date32 = (c?: {
   description?: string;
   default?: Date;
-} = {}): CHDate32 => ({
+}): CHDate32 => ({
   type: DataTypes.Date32,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

@@ -8,18 +8,14 @@ export type CHFixedString = DataType<DataTypes.FixedString, string>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/fixedstring
  */
-export const fixedString = ({
-  length,
-  description,
-  default: defaultVal,
-}: {
+export const fixedString = (c: {
   length: number;
   description?: string;
   default?: string;
 }): CHFixedString => ({
   type: DataTypes.FixedString,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
-  arguments: [length],
+  description: c.description,
+  default: c.default,
+  typeScriptType: c.default!,
+  arguments: [c.length],
 });

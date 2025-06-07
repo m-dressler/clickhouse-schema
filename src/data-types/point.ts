@@ -8,15 +8,12 @@ export type CHPoint = DataType<DataTypes.Point, [number, number]>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/geo#point
  */
-export const point = ({
-  description,
-  default: defaultVal,
-}: {
+export const point = (c?: {
   description?: string;
   default?: [number, number];
-} = {}): CHPoint => ({
+}): CHPoint => ({
   type: DataTypes.Point,
-  typeScriptType: defaultVal!,
-  description,
-  default: defaultVal,
+  typeScriptType: c?.default!,
+  description: c?.description,
+  default: c?.default,
 });

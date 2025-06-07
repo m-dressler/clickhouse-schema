@@ -8,15 +8,12 @@ export type CHUUID = DataType<DataTypes.UUID, string>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/uuid
  */
-export const uuid = ({
-  description,
-  default: defaultVal,
-}: {
+export const uuid = (c?: {
   description?: string;
   default?: string;
-} = {}): CHUUID => ({
+}): CHUUID => ({
   type: DataTypes.UUID,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

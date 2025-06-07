@@ -8,15 +8,12 @@ export type CHUInt256 = DataType<DataTypes.UInt256, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/int-uint
  */
-export const uint256 = ({
-  description,
-  default: defaultVal,
-}: {
+export const uint256 = (c?: {
   description?: string;
   default?: number;
-} = {}): CHUInt256 => ({
+}): CHUInt256 => ({
   type: DataTypes.UInt256,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

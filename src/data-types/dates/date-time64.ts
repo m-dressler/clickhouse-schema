@@ -8,20 +8,15 @@ export type CHDateTime64 = DataType<DataTypes.DateTime64, Date>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/datetime64
  */
-export const dateTime64 = ({
-  timezone,
-  precision,
-  description,
-  default: defaultVal,
-}: {
+export const dateTime64 = (c: {
   precision: number;
   timezone: string;
   description?: string;
   default?: Date;
 }): CHDateTime64 => ({
   type: DataTypes.DateTime64,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
-  arguments: [precision, timezone],
+  description: c.description,
+  default: c.default,
+  typeScriptType: c.default!,
+  arguments: [c.precision, c.timezone],
 });

@@ -8,15 +8,12 @@ export type CHInt64 = DataType<DataTypes.Int64, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/int-uint
  */
-export const int64 = ({
-  description,
-  default: defaultVal,
-}: {
+export const int64 = (c?: {
   description?: string;
   default?: number;
-} = {}): CHInt64 => ({
+}): CHInt64 => ({
   type: DataTypes.Int64,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

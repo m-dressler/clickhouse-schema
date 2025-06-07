@@ -8,18 +8,14 @@ export type CHDecimal32 = DataType<DataTypes.Decimal32, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/decimal
  */
-export const decimal32 = ({
-  scale,
-  description,
-  default: defaultVal,
-}: {
+export const decimal32 = (c: {
   scale: number;
   description?: string;
   default?: number;
 }): CHDecimal32 => ({
   type: DataTypes.Decimal32,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
-  arguments: [scale],
+  description: c.description,
+  default: c.default,
+  typeScriptType: c.default!,
+  arguments: [c.scale],
 });

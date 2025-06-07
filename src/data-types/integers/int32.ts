@@ -8,15 +8,12 @@ export type CHInt32 = DataType<DataTypes.Int32, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/int-uint
  */
-export const int32 = ({
-  description,
-  default: defaultVal,
-}: {
+export const int32 = (c?: {
   description?: string;
   default?: number;
-} = {}): CHInt32 => ({
+}): CHInt32 => ({
   type: DataTypes.Int32,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

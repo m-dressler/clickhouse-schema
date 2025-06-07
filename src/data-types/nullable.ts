@@ -9,18 +9,14 @@ export type CHNullable<ItemType extends DataType<DataTypes, unknown>> =
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/nullable
  */
-export const nullable = <ItemType extends DataType<DataTypes, unknown>>({
-  itemType,
-  description,
-  default: defaultVal,
-}: {
+export const nullable = <ItemType extends DataType<DataTypes, unknown>>(c: {
   itemType: ItemType;
   description?: string;
   default?: ItemType["typeScriptType"];
 }): CHNullable<ItemType> => ({
   type: DataTypes.Nullable,
-  typeScriptType: itemType.typeScriptType || null,
-  innerTypes: [itemType],
-  description,
-  default: defaultVal,
+  typeScriptType: c.itemType.typeScriptType || null,
+  innerTypes: [c.itemType],
+  description: c.description,
+  default: c.default,
 });

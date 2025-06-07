@@ -8,15 +8,12 @@ export type CHIPv4 = DataType<DataTypes.IPv4, string>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/ipv4
  */
-export const ipv4 = ({
-  description,
-  default: defaultVal,
-}: {
+export const ipv4 = (c?: {
   description?: string;
   default?: string;
-} = {}): CHIPv4 => ({
+}): CHIPv4 => ({
   type: DataTypes.IPv4,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

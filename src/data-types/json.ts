@@ -11,15 +11,7 @@ export type CHJson<T> = DataType<DataTypes.JSON, T>;
  *
  * @param typedPaths A dot separated path and its type
  */
-export const json = <T>({
-  maxDynamicPaths,
-  maxDynamicTypes,
-  typedPaths,
-  skipPaths,
-  skipPathsRegex,
-  description,
-  default: defaultVal,
-}: {
+export const json = <T>(c?: {
   maxDynamicPaths?: number;
   maxDynamicTypes?: number;
   typedPaths?: Record<string, DataType<DataTypes, unknown>>;
@@ -27,27 +19,29 @@ export const json = <T>({
   skipPathsRegex?: (RegExp | string)[];
   description?: string;
   default?: T;
-} = {}): CHJson<T> => ({
+}): CHJson<T> => ({
   type: DataTypes.JSON,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
   arguments: [
-    ...(maxDynamicPaths != null
-      ? [literal(`max_dynamic_paths=${maxDynamicPaths}`)]
+    ...(c?.maxDynamicPaths != null
+      ? [literal(`max_dynamic_paths=${c.maxDynamicPaths}`)]
       : []),
-    ...(maxDynamicTypes != null
-      ? [literal(`max_dynamic_types=${maxDynamicTypes}`)]
+    ...(c?.maxDynamicTypes != null
+      ? [literal(`max_dynamic_types=${c.maxDynamicTypes}`)]
       : []),
     // TODO properly stringify typedPaths types
-    ...(typedPaths != null
-      ? Object.entries(typedPaths).map(([k, v]) =>
+    ...(c?.typedPaths != null
+      ? Object.entries(c.typedPaths).map(([k, v]) =>
         literal(k + " " + stringifyDataType(v))
       )
       : []),
-    ...(skipPaths != null ? skipPaths.map((v) => literal("SKIP " + v)) : []),
-    ...(skipPathsRegex != null
-      ? skipPathsRegex.map((v) =>
+    ...(c?.skipPaths != null
+      ? c.skipPaths.map((v) => literal("SKIP " + v))
+      : []),
+    ...(c?.skipPathsRegex != null
+      ? c.skipPathsRegex.map((v) =>
         literal(
           `SKIP REGEXP '${
             v instanceof RegExp ? v.toString().slice(1, -1) : v

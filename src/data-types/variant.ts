@@ -17,11 +17,7 @@ export type CHVariant<ItemTypes extends AnyDataType[]> = DataType<
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/variant
  */
-export const variant = <ItemTypes extends AnyDataType[]>({
-  itemTypes,
-  description,
-  default: defaultVal,
-}: {
+export const variant = <ItemTypes extends AnyDataType[]>(c: {
   itemTypes: ItemTypes;
   description?: string;
   default?: {
@@ -30,11 +26,11 @@ export const variant = <ItemTypes extends AnyDataType[]>({
   };
 }): CHVariant<ItemTypes> => ({
   type: DataTypes.Variant,
-  typeScriptType: itemTypes.map((i) => i.typeScriptType) as Exclude<
-    typeof defaultVal,
+  typeScriptType: c.itemTypes.map((i) => i.typeScriptType) as Exclude<
+    typeof c.default,
     undefined
   >,
-  innerTypes: itemTypes,
-  description,
-  default: defaultVal,
+  innerTypes: c.itemTypes,
+  description: c.description,
+  default: c.default,
 });

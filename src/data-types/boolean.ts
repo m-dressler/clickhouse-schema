@@ -8,15 +8,12 @@ export type CHBoolean = DataType<DataTypes.Boolean, boolean>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/boolean
  */
-export const boolean = ({
-  description,
-  default: defaultVal,
-}: {
+export const boolean = (c?: {
   description?: string;
   default?: boolean;
-} = {}): CHBoolean => ({
+}): CHBoolean => ({
   type: DataTypes.Boolean,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

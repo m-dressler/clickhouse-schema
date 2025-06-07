@@ -34,18 +34,14 @@ export type CHLowCardinality<
  */
 export const lowCardinality = <
   ItemType extends DataType<LowCardinalityDataTypes, unknown>,
->({
-  itemType,
-  description,
-  default: defaultVal,
-}: {
+>(c: {
   itemType: ItemType;
   description?: string;
   default?: ItemType["typeScriptType"];
 }): CHLowCardinality<ItemType> => ({
   type: DataTypes.LowCardinality,
-  typeScriptType: itemType.typeScriptType,
-  innerTypes: [itemType],
-  description,
-  default: defaultVal,
+  typeScriptType: c.itemType.typeScriptType,
+  innerTypes: [c.itemType],
+  description: c.description,
+  default: c.default,
 });

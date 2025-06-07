@@ -8,20 +8,15 @@ export type CHDecimal = DataType<DataTypes.Decimal, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/decimal
  */
-export const decimal = ({
-  precision,
-  scale,
-  description,
-  default: defaultVal,
-}: {
+export const decimal = (c: {
   precision: number;
   scale: number;
   description?: string;
   default?: number;
 }): CHDecimal => ({
   type: DataTypes.Decimal,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
-  arguments: [precision, scale],
+  description: c.description,
+  default: c.default,
+  typeScriptType: c.default!,
+  arguments: [c.precision, c.scale],
 });

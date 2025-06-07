@@ -8,15 +8,12 @@ export type CHFloat64 = DataType<DataTypes.Float64, number>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/float
  */
-export const float64 = ({
-  description,
-  default: defaultVal,
-}: {
+export const float64 = (c?: {
   description?: string;
   default?: number;
-} = {}): CHFloat64 => ({
+}): CHFloat64 => ({
   type: DataTypes.Float64,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
+  description: c?.description,
+  default: c?.default,
+  typeScriptType: c?.default!,
 });

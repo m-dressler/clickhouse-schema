@@ -8,18 +8,14 @@ export type CHDateTime = DataType<DataTypes.DateTime, Date>;
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/datetime
  */
-export const dateTime = ({
-  timezone,
-  description,
-  default: defaultVal,
-}: {
+export const dateTime = (c: {
   timezone: string;
   description?: string;
   default?: Date;
 }): CHDateTime => ({
   type: DataTypes.DateTime,
-  description,
-  default: defaultVal,
-  typeScriptType: defaultVal!,
-  arguments: [timezone],
+  description: c.description,
+  default: c.default,
+  typeScriptType: c.default!,
+  arguments: [c.timezone],
 });
