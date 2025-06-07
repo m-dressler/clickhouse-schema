@@ -18,6 +18,12 @@ const SCHEMA = {
     timezone: "UTC",
     default: new Date(),
   }),
+  family: CH.tuple(
+    itemTypes: [
+      ["mother", uint16()],
+      ["father", uint8()],
+    ] as const, // <- This is important if you want the full type inference
+  )
 } as const satisfies CH.Schema;
 
 type Schema = CH.infer<typeof SCHEMA>;
