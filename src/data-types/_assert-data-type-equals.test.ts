@@ -1,5 +1,5 @@
 import { assertStrictEquals } from "jsr:@std/assert/strict-equals";
-import { AnyDataType } from "../_mod.ts";
+import type { AnyDataType } from "../_mod.ts";
 import { stringifyDataType } from "../stringify-data-type.ts";
 
 /** Stringified the {@link dataType} and strict asserts it equals the expected value */

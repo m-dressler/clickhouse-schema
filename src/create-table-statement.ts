@@ -1,4 +1,4 @@
-import { AnyDataType, Engines, Schema } from "./_mod.ts";
+import type { AnyDataType, Engines, Schema } from "./_mod.ts";
 import { stringifyDataType } from "./stringify-data-type.ts";
 
 /** Converts a column's schema into the CREATE TABLE string statement */

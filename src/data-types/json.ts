@@ -1,4 +1,4 @@
-import { DataType, DataTypes } from "../_mod.ts";
+import { type DataType, DataTypes } from "../_mod.ts";
 import { literal, stringifyDataType } from "../stringify-data-type.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/newjson */

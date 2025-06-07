@@ -1,4 +1,4 @@
-import { DataType, DataTypes } from "../_mod.ts";
+import { type DataType, DataTypes } from "../_mod.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/fixedstring */
 export type CHFixedString = DataType<DataTypes.FixedString, string>;

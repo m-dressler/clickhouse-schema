@@ -1,4 +1,4 @@
-import { Schema } from "./_mod.ts";
+import type { Schema } from "./_mod.ts";
 
 /**
  * Infers the typescript representation of a schema

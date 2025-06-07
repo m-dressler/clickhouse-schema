@@ -48,14 +48,14 @@ import { type CHJson, json } from "./data-types/json.ts";
 import {
   type CHLowCardinality,
   lowCardinality,
-  LowCardinalityDataTypes,
+  type LowCardinalityDataTypes,
 } from "./data-types/low-cardinality.ts";
 import { type CHNullable, nullable } from "./data-types/nullable.ts";
 import { type CHString, string } from "./data-types/string.ts";
 import { type CHTuple, tuple } from "./data-types/tuple.ts";
 import { type CHUUID, uuid } from "./data-types/uuid.ts";
 import { type CHVariant, variant } from "./data-types/variant.ts";
-import { Literal } from "./stringify-data-type.ts";
+import type { Literal } from "./stringify-data-type.ts";
 
 // Exports
 export { toCreateTableQuery } from "./create-table-statement.ts";

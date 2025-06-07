@@ -1,4 +1,4 @@
-import { AnyDataType, DataTypes } from "./_mod.ts";
+import { type AnyDataType, DataTypes } from "./_mod.ts";
 
 /** Symbol used to mark a string as a literal value */
 const LITERAL = Symbol("LITERAL");

@@ -1,4 +1,4 @@
-import { DataType, DataTypes } from "../../_mod.ts";
+import { type DataType, DataTypes } from "../../_mod.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/int-uint */
 export type CHInt8 = DataType<DataTypes.Int8, number>;

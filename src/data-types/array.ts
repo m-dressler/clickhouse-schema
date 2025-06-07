@@ -1,4 +1,4 @@
-import { AnyDataType, DataType, DataTypes } from "../_mod.ts";
+import { type AnyDataType, type DataType, DataTypes } from "../_mod.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/array */
 export type CHArray<ItemType extends AnyDataType> = DataType<

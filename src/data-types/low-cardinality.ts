@@ -1,4 +1,4 @@
-import { DataType, DataTypes } from "../_mod.ts";
+import { type DataType, DataTypes } from "../_mod.ts";
 
 /** Represents all the data types that are allowed in a low cardinality column*/
 export type LowCardinalityDataTypes =

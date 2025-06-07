@@ -1,4 +1,4 @@
-import { DataType, DataTypes } from "../_mod.ts";
+import { type DataType, DataTypes } from "../_mod.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/ipv6 */
 export type CHIPv6 = DataType<DataTypes.IPv6, string>;

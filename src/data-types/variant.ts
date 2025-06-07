@@ -1,4 +1,4 @@
-import { AnyDataType, DataType, DataTypes } from "../_mod.ts";
+import { type AnyDataType, type DataType, DataTypes } from "../_mod.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/variant */
 export type CHVariant<ItemTypes extends AnyDataType[]> = DataType<

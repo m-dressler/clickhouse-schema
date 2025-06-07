@@ -1,4 +1,4 @@
-import { DataType, DataTypes } from "../../_mod.ts";
+import { type DataType, DataTypes } from "../../_mod.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/datetime64 */
 export type CHDateTime64 = DataType<DataTypes.DateTime64, Date>;
