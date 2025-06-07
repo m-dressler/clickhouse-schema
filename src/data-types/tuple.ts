@@ -2,12 +2,13 @@ import { type AnyDataType, type DataType, DataTypes } from "../_mod.ts";
 import { literal, stringifyDataType } from "../stringify-data-type.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/tuple */
-export type CHTuple<Tuple extends [name: string, type: AnyDataType][]> =
-  DataType<
-    DataTypes.Tuple,
-    { [K in keyof Tuple]: Tuple[K][1]["typeScriptType"] },
-    { [K in keyof Tuple]: Tuple[K][1] }
-  >;
+export type CHTuple<
+  Tuple extends ReadonlyArray<readonly [name: string, type: AnyDataType]>,
+> = DataType<
+  DataTypes.Tuple,
+  { [K in keyof Tuple]: Tuple[K][1]["typeScriptType"] },
+  { -readonly [K in keyof Tuple]: Tuple[K][1] }
+>;
 
 /**
  * Creates a new `Tuple(T1, T2, ...)` ClickHouse value of the provided types
@@ -16,7 +17,9 @@ export type CHTuple<Tuple extends [name: string, type: AnyDataType][]> =
  *
  * @see https://clickhouse.com/docs/sql-reference/data-types/tuple
  */
-export const tuple = <Tuple extends [name: string, type: AnyDataType][]>(c: {
+export const tuple = <
+  Tuple extends ReadonlyArray<readonly [name: string, type: AnyDataType]>,
+>(c: {
   itemTypes: Tuple;
   description?: string;
   default?: { [K in keyof Tuple]: Tuple[K][1]["typeScriptType"] };
