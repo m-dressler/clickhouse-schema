@@ -1,12 +1,22 @@
 import { type AnyDataType, type DataType, DataTypes } from "../_mod.ts";
 import { literal, stringifyDataType } from "../stringify-data-type.ts";
 
+/** The inferred typescript type of a tuple */
+type TupleTs<
+  Tuple extends ReadonlyArray<readonly [name: string, type: AnyDataType]>,
+> = {
+  [K in Tuple[number][0]]: Extract<
+    Tuple[number],
+    readonly [K, unknown]
+  >[1]["typeScriptType"];
+};
+
 /** @see https://clickhouse.com/docs/sql-reference/data-types/tuple */
 export type CHTuple<
   Tuple extends ReadonlyArray<readonly [name: string, type: AnyDataType]>,
 > = DataType<
   DataTypes.Tuple,
-  { [K in keyof Tuple]: Tuple[K][1]["typeScriptType"] },
+  TupleTs<Tuple>,
   { -readonly [K in keyof Tuple]: Tuple[K][1] }
 >;
 
@@ -22,7 +32,7 @@ export const tuple = <
 >(c: {
   itemTypes: Tuple;
   description?: string;
-  default?: { [K in keyof Tuple]: Tuple[K][1]["typeScriptType"] };
+  default?: TupleTs<Tuple>;
 }): CHTuple<Tuple> => ({
   type: DataTypes.Tuple,
   typeScriptType: c.itemTypes.map(
