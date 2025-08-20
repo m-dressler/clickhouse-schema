@@ -1,4 +1,4 @@
-import { type DataType, DataTypes } from "../_mod.ts";
+import { type AnyDataType, type DataType, DataTypes } from "../_mod.ts";
 import { literal, stringifyDataType } from "../stringify-data-type.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/newjson */
@@ -14,7 +14,7 @@ export type CHJson<T> = DataType<DataTypes.JSON, T>;
 export const json = <T>(c?: {
   maxDynamicPaths?: number;
   maxDynamicTypes?: number;
-  typedPaths?: Record<string, DataType<DataTypes, unknown>>;
+  typedPaths?: Record<string, AnyDataType>;
   skipPaths?: string[];
   skipPathsRegex?: (RegExp | string)[];
   description?: string;
