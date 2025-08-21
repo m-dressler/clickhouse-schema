@@ -1,7 +1,7 @@
 import { type DataType, DataTypes } from "../../_mod.ts";
 
 /** @see https://clickhouse.com/docs/sql-reference/data-types/datetime64 */
-export type CHDateTime64 = DataType<DataTypes.DateTime64, Date>;
+export type CHDateTime64 = DataType<DataTypes.DateTime64, string>;
 
 /**
  * Creates a new `DateTime` ClickHouse value with the provided precision in the provided timezone
@@ -12,7 +12,7 @@ export const dateTime64 = (c: {
   precision: number;
   timezone: string;
   description?: string;
-  default?: Date;
+  default?: string;
 }): CHDateTime64 => ({
   type: DataTypes.DateTime64,
   description: c.description,
