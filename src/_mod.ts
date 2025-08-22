@@ -56,6 +56,10 @@ import { type CHString, string } from "./data-types/string.ts";
 import { type CHTuple, tuple } from "./data-types/tuple.ts";
 import { type CHUUID, uuid } from "./data-types/uuid.ts";
 import { type CHVariant, variant } from "./data-types/variant.ts";
+import {
+  aggregateFunction,
+  type CHAggregateFunction,
+} from "./data-types/functions/aggregateFunction.ts";
 import type { Literal } from "./stringify-data-type.ts";
 
 // Exports
@@ -63,9 +67,11 @@ export { toCreateTableQuery } from "./create-table-statement.ts";
 export { enum } from "./data-types/enum.ts";
 export type { infer } from "./infer-schema-type.ts";
 export {
+  aggregateFunction,
   array,
   bfloat16,
   boolean,
+  type CHAggregateFunction,
   type CHArray,
   type CHBFloat16,
   type CHBoolean,
@@ -184,6 +190,7 @@ export enum DataTypes {
   JSON,
   LowCardinality,
   Point,
+  AggregateFunction,
 }
 
 /** DataType is an interface that represents a ClickHouse data type */
